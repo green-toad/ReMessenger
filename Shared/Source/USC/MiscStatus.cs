@@ -8,14 +8,18 @@ namespace Shared.Source.USC
     {
         I_AM_CHECKING = 0,
         I_AM_ONLINE = 1,
-        I_AM_OFFLINE = 2
+        I_AM_OFFLINE = 2,
+
+        UNKNOWN = 255
     }
 
     public enum MessageStatus
     {
         SENDING = 0,
         RECEIVED_BY_SERVER = 1,
-        READ_BY_USER = 2
+        READ_BY_USER = 2,
+
+        UNKNOWN = 255
     }
 
     public enum ReKeyExportType

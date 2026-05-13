@@ -130,6 +130,7 @@ namespace Shared.Source.USC
             public List<Byte> ReKeyExport = [];
             public Byte[]   PackedContent = [];
 
+
             public UnpackedContent() { }
 
             public UnpackedContent(UInt64 sessionId,
@@ -154,7 +155,6 @@ namespace Shared.Source.USC
                 ReKeyExport   = [.. copyFrom.ReKeyExport];
                 PackedContent = [.. copyFrom.PackedContent];
             }
-
         }
     }
 }

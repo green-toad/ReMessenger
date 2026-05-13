@@ -24,19 +24,18 @@ namespace Shared.Source.USC
         GET_ACTIVE_CHATS    = 11,
         UPDATE_CHAT_HISTORY = 12,
 
-        PING_STATUS_CHECK = 13,
-        MESSAGE_RECEIVED  = 14,
-        MESSAGE_READ      = 15,
+        UPDATE_PING_STATUS    = 13,
+        UPDATE_MESSAGE_STATUS = 14,
 
-        SEND_MSG   = 16,
-        SEND_PIC   = 17,
-        SEND_FILE  = 18,
-        SEND_MUSIC = 19,
-        DELETE_MSG = 20,
+        SEND_MSG   = 15,
+        SEND_PIC   = 16,
+        SEND_FILE  = 17,
+        SEND_MUSIC = 18,
+        DELETE_MSG = 19,
 
-        CHANGE_LOGIN    = 21,
-        CHANGE_PASSWORD = 22,
-        DELETE_ACCOUNT  = 23,
+        CHANGE_LOGIN    = 20,
+        CHANGE_PASSWORD = 21,
+        DELETE_ACCOUNT  = 22,
 
         UNKNOWN = 255
     }
@@ -63,6 +62,7 @@ namespace Shared.Source.USC
         CLIENT_HERE_IS_NEW_EKEY_SHIFTS = 12,
 
         SWITCH_MY_SESSION_ID_TO_NEW_AND_SEND_IT_BACK = 13,
+        HERE_IS_YOUR_NEW_SESSION_ID = 14,
 
         UNKNOWN = 255
     }
