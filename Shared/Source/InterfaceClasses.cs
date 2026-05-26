@@ -16,12 +16,12 @@ namespace Shared.Source
 
         public JN_MessageState state = JN_MessageState.SENDING;
     }
-    public enum JN_MessageState
+    public enum JN_MessageState : Byte
     {
-        SENDING,
-        SEND_TO_SERVER,
-        RECEIVED_BY_CLIENT,
-        READ_BY_CLIENT
+        SENDING = 0,
+        SEND_TO_SERVER = 1,
+        RECEIVED_BY_CLIENT = 2,
+        READ_BY_CLIENT = 3
     }
 
 

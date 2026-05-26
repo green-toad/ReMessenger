@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using AVcontrol;
 
 
 
@@ -10,9 +14,15 @@ namespace Shared.Source.USC
         {
             throw new NotImplementedException();
         }
-        static public Byte[] UPDATE_CHAT_HISTORY(SubCommand[] subCommands)
+        static public Byte[] UPDATE_CHAT_HISTORY(JN_Message[] chatStory, SubCommand[]? subCommands=null)
         {
-            throw new NotImplementedException();
+            List<byte> res = new List<byte>();
+
+            foreach (var msg in chatStory)
+            {
+                var text = ToBinary.Utf16(msg.message);
+                uint len = (uint)text.Length;
+            }
         }
     }
 }
