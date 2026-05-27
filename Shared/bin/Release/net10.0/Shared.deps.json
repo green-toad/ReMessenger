@@ -9,7 +9,7 @@
       "Shared/1.0.0": {
         "dependencies": {
           "Microsoft.Maui.Controls": "10.0.51",
-          "AVcontrol": "2.6.0.0"
+          "AVcontrol": "2.7.0.0"
         },
         "runtime": {
           "Shared.dll": {}
@@ -313,11 +313,11 @@
           }
         }
       },
-      "AVcontrol/2.6.0.0": {
+      "AVcontrol/2.7.0.0": {
         "runtime": {
           "AVcontrol.dll": {
-            "assemblyVersion": "2.6.0.0",
-            "fileVersion": "2.6.0.0"
+            "assemblyVersion": "2.7.0.0",
+            "fileVersion": "2.7.0.0"
           }
         }
       }
@@ -448,7 +448,7 @@
       "path": "microsoft.maui.graphics/10.0.51",
       "hashPath": "microsoft.maui.graphics.10.0.51.nupkg.sha512"
     },
-    "AVcontrol/2.6.0.0": {
+    "AVcontrol/2.7.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

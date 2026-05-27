@@ -21,7 +21,7 @@ namespace Shared.Source.USC
             int totalLength = 0;
             foreach (var msg in chatStory)
             {
-                totalLength += 4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8;
+                totalLength += 4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8 + 4;
             }
             byte[] result = new byte[totalLength];
             int offset = 0;
@@ -38,6 +38,8 @@ namespace Shared.Source.USC
                 offset += Encoding.Unicode.GetByteCount(msg.message);
                 Buffer.BlockCopy(ToBinary.LittleEndian(msg.authorSUID), 0, result, offset, 8);
                 offset += 8;
+                Buffer.BlockCopy(ToBinary.LittleEndian(msg.messageSUID), 0, result, offset, 4);
+                offset += 4;
             }
 
             return result;
