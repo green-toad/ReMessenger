@@ -1,78 +1,91 @@
-﻿using Microsoft.Maui.Controls;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
-using System.Net.Security;
-using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
+using AVcontrol;
 
 namespace Shared.Source.tools
 {
-    public static class DebugTool
+    public class DebugTool : IAsyncDisposable
     {
-        private static readonly string path = AppDomain.CurrentDomain.BaseDirectory;
-        private static readonly Channel<log> logs = Channel.CreateUnbounded<log>();
-        private static readonly ConcurrentDictionary<string, StreamWriter> writerList = new();
-        private static Task? exec;
-
-        public static void StartDebugTool()
+        private Channel<req> requests = Channel.CreateUnbounded<req>();
+        private Task executor;
+        private CancellationTokenSource _cts = new();
+        private FileStream fs;
+        public DebugTool(string path)
         {
-            exec = Exec();
+            fs = File.Create(path);
+            executor = exec();
+        }
+        public void Log(string text)
+        {
+            var a = new req();
+            a.content = text;
+            a.type = req.Type.log;
+            a.time = DateTime4b.Now.ToString();
+            requests.Writer.TryWrite(a);
         }
 
-        public static void Log(log l)
+        public void Error(string text)
         {
-            logs.Writer.TryWrite(l);
+            var a = new req();
+            a.content = text;
+            a.type = req.Type.error;
+            a.time = DateTime4b.Now.ToString();
+            requests.Writer.TryWrite(a);
         }
 
-        private static async Task Exec()
+        public void Warning(string text)
         {
-            
-            var reader = logs.Reader;
-            await foreach (var req in reader.ReadAllAsync())
+            var a = new req();
+            a.content = text;
+            a.type = req.Type.warning;
+            a.time = DateTime4b.Now.ToString();
+            requests.Writer.TryWrite(a);
+        }
+
+        private async Task exec()
+        {
+            await foreach (var request in requests.Reader.ReadAllAsync(_cts.Token))
             {
-                var writer = writerList.GetOrAdd(req.d, _ =>
+                try
                 {
-                    var stream = new FileStream(
-                        Path.Combine(path, req.d),
-                        FileMode.Append,
-                        FileAccess.Write,
-                        FileShare.Read,
-                        4096,
-                        true);
-                    return new StreamWriter(stream, Encoding.UTF8);
-                });
-
-                await writer.WriteLineAsync($"{req.l}: {req.m}");
+                await fs.WriteAsync(ToBinary.Utf16($"{request.type.ToString()}({request.time}): {request.content}"));
+                await fs.FlushAsync();
+                }
+                catch (OperationCanceledException)
+                {
+                    // ничего!
+                }
+                catch (Exception e)
+                {
+                    Log(e.ToString());
+                }
             }
         }
-
-
-        public static async Task Shutdown()
+        public async ValueTask DisposeAsync()
         {
-            logs.Writer.TryComplete();
-            foreach (var a in writerList)
-            {
-                await a.Value.DisposeAsync();
-            }
-
-            if (exec != null) await exec;
+            _cts.Cancel();
+            await executor;
+            fs.Close();
+            requests.Writer.Complete();
         }
 
-        public struct log(log.Level level, string message, string destination)
+        private class req
         {
-            public enum Level
-            {
-                Info,
-                Error,
-                Warning,
+            public string content;
+            public Type type;
+            public string time;
+
+            public enum Type{
+                error,
+                warning,
+                log,
             }
-            public readonly string d = destination;
-            public readonly Level l = level;
-            public readonly string m = message;
         }
     }
 }
