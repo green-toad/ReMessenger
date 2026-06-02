@@ -58,7 +58,7 @@ namespace Shared.Source.USC
         }
 
 
-        static public byte[] HERE_IS_CHAT_HISTORY(JN_Message[] chatStory)
+        static public byte[] HERE_IS_CHAT_HISTORY(JN_Message[] chatStory, UInt64 sessionId, UInt64 forResponseSID)
         {
             int totalLength = 0;
             foreach (var msg in chatStory)
@@ -84,7 +84,14 @@ namespace Shared.Source.USC
                 offset += 4;
             }
 
-            return result;
+            return PackTogether
+            (
+                sessionId,
+                forResponseSID,
+                MainCommand.HERE_IS_ACTIVE_CHATS,
+                [],
+                result
+            );
         }
     }
 }
