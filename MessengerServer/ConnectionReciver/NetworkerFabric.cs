@@ -13,7 +13,7 @@ namespace MessengerServer.ConnectionReciver
     }
 
 
-    public class ConnectionHandlerFactory : IConnectionFabric
+    public class ConnectionHandlerFactory : IConnectionFabric // сделать так, что бы Create возвращал бы Task<Connection> и эту штуку отдельно бы обробавтывала сторонняя таска или, например, та же самая. . . типо Task.WhenAny() а внутри проводилось бы соеденение и подтягивание данных от пользователя. . . что то вроде мини хендлера, но только на подключения. . .
     {
         private readonly IServiceProvider _serviceProvider;
 
