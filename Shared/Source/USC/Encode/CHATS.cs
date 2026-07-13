@@ -23,42 +23,58 @@ namespace Shared.Source.USC
                 []
             );
         }
-        static public Byte[] HERE_IS_ACTIVE_CHATS(UInt64 responseSID, JN_Chat[] chats)
+        static public byte[] HERE_IS_ACTIVE_CHATS(JN_Chat[] chats)
         {
             int totalLength = 0;
             foreach (var chat in chats)
             {
-                //                 [путь к аватарке]                       [чат сюид]    [сюды юзеров]          [заголовок для парса]
-                totalLength += Encoding.Unicode.GetByteCount(chat.chatAvatar) + 8 + (8 * chat.membersSUID.Count) + 2 + 2;
+                int avatarBytes = Encoding.Unicode.GetByteCount(chat.chatAvatar);
+                int nameBytes   = Encoding.Unicode.GetByteCount(chat.name);
+                int bioBytes    = Encoding.Unicode.GetByteCount(chat.bio);
+                int membersCount = chat.membersSUID.Count;
+                totalLength += 2 + 2 + 8 + 2 + nameBytes + 2 + bioBytes + avatarBytes + 8 * membersCount;
             }
+
             byte[] result = new byte[totalLength];
             int offset = 0;
 
             foreach (var chat in chats)
             {
-                Buffer.BlockCopy(ToBinary.LittleEndian<UInt16>((UInt16)Encoding.Unicode.GetByteCount(chat.chatAvatar)), 0, result, offset, 2);
+                int avatarBytes = Encoding.Unicode.GetByteCount(chat.chatAvatar);
+                int nameBytes   = Encoding.Unicode.GetByteCount(chat.name);
+                int bioBytes    = Encoding.Unicode.GetByteCount(chat.bio);
+                int membersCount = chat.membersSUID.Count;
+                Buffer.BlockCopy(ToBinary.LittleEndian<UInt16>((ushort)avatarBytes), 0, result, offset, 2);
                 offset += 2;
-                Buffer.BlockCopy(ToBinary.LittleEndian<UInt16>((UInt16)(8 * chat.membersSUID.Count)), 0, result, offset, 2);
+                Buffer.BlockCopy(ToBinary.LittleEndian<UInt16>((ushort)membersCount), 0, result, offset, 2);
                 offset += 2;
                 Buffer.BlockCopy(ToBinary.LittleEndian<UInt64>(chat.chatSUID), 0, result, offset, 8);
+                offset += 8;
+
+                Buffer.BlockCopy(ToBinary.LittleEndian<UInt16>((ushort)nameBytes), 0, result, offset, 2);
                 offset += 2;
-                Buffer.BlockCopy(ToBinary.Utf16(chat.chatAvatar), 0, result, offset, Encoding.Unicode.GetByteCount(chat.chatAvatar));
-                offset += Encoding.Unicode.GetByteCount(chat.chatAvatar);
-                for (int i = 0; i < chat.membersSUID.Count; i++)
+                byte[] nameData = ToBinary.Utf16(chat.name);
+                Buffer.BlockCopy(nameData, 0, result, offset, nameBytes);
+                offset += nameBytes;
+                Buffer.BlockCopy(ToBinary.LittleEndian<UInt16>((ushort)bioBytes), 0, result, offset, 2);
+                offset += 2;
+
+                byte[] bioData = ToBinary.Utf16(chat.bio);
+                Buffer.BlockCopy(bioData, 0, result, offset, bioBytes);
+                offset += bioBytes;
+
+                byte[] avatarData = ToBinary.Utf16(chat.chatAvatar);
+                Buffer.BlockCopy(avatarData, 0, result, offset, avatarBytes);
+                offset += avatarBytes;
+
+                foreach (var suid in chat.membersSUID)
                 {
-                    Buffer.BlockCopy(ToBinary.LittleEndian<UInt64>(chat.membersSUID[i]), 0, result, offset, 8);
+                    Buffer.BlockCopy(ToBinary.LittleEndian<UInt64>(suid), 0, result, offset, 8);
                     offset += 8;
                 }
             }
 
-            return PackTogether
-            (
-                responseSID,
-                0,
-                MainCommand.HERE_IS_ACTIVE_CHATS,
-                [],
-                result
-            );
+            return result;
         }
 
 

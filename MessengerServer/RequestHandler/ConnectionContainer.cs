@@ -11,20 +11,20 @@ namespace MessengerServer.RequestHandler
     {
         public bool AddNetworker(Socket socket, Networker networker);
         public Networker? GetNetworker(Socket socket);
-        public bool AddSuid(Socket socket, Guid suid);
-        public Guid? GetSuid(Socket socket);
+        public bool AddSuid(Socket socket, UInt64 suid);
+        public UInt64? GetSuid(Socket socket);
     }
     internal class ConnectionContainer : IConnectionContainer
     {
         private readonly ConcurrentDictionary<Socket, Networker> _networkers = new();
-        private readonly ConcurrentDictionary<Socket, Guid> _guids = new();
+        private readonly ConcurrentDictionary<Socket, UInt64> _guids = new();
 
         public bool AddNetworker(Socket socket, Networker networker)
         {
             return _networkers.TryAdd(socket, networker);
         }
 
-        public bool AddSuid(Socket socket, Guid suid)
+        public bool AddSuid(Socket socket, UInt64 suid)
         {
             return _guids.TryAdd(socket, suid);
         }
@@ -36,7 +36,7 @@ namespace MessengerServer.RequestHandler
             return null;
         }
 
-        public Guid? GetSuid(Socket socket)
+        public UInt64? GetSuid(Socket socket)
         {
             if (_guids.TryGetValue(socket, out var suid))
                 return suid;

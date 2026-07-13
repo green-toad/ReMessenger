@@ -23,6 +23,11 @@ namespace MessengerServer
 
             modelBuilder.Entity<Participant>()
             .HasKey(p => new { p.UserSUID, p.ChatSUID });
+
+            modelBuilder.Entity<Participant>()
+            .HasOne(p => p.ChatLink)
+            .WithMany()
+            .HasForeignKey(p => p.ChatSUID);
         }
     }
 }

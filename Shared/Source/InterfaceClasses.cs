@@ -43,11 +43,12 @@ namespace Shared.Source
     }
 
 
-    public class JN_Chat(List<UInt64> membersSUID, string chatAvatar, UInt64 chatSUID)
+    public class JN_Chat(List<UInt64> membersSUID, string chatAvatar, string name, string bio, UInt64 chatSUID)
     {
         public List<UInt64>  membersSUID = membersSUID;
         public string chatAvatar = chatAvatar;
-
+        public string name = name;
+        public string bio = bio;
         public UInt64 chatSUID = chatSUID;
         //public List<JN_ChatTopic> topics = topics;
     }
