@@ -9,32 +9,38 @@ namespace MessengerServer.RequestHandler
 {
     public interface IConnectionContainer
     {
-        public void Add(Networker networker);
-        public Networker GetBySocket(Socket socket);
-        public bool PairWithUID(Socket socket, Guid suid);
-        public Networker GetBySUID(Guid suid);
+        public bool AddNetworker(Socket socket, Networker networker);
+        public Networker? GetNetworker(Socket socket);
+        public bool AddSuid(Socket socket, Guid suid);
+        public Guid? GetSuid(Socket socket);
     }
     internal class ConnectionContainer : IConnectionContainer
     {
-        private readonly ConcurrentDictionary<Guid?, Networker> _networkers = new();
-        public void Add(Networker networker)
+        private readonly ConcurrentDictionary<Socket, Networker> _networkers = new();
+        private readonly ConcurrentDictionary<Socket, Guid> _guids = new();
+
+        public bool AddNetworker(Socket socket, Networker networker)
         {
-            throw new NotImplementedException();
+            return _networkers.TryAdd(socket, networker);
         }
 
-        public Networker GetBySocket(Socket socket)
+        public bool AddSuid(Socket socket, Guid suid)
         {
-            throw new NotImplementedException();
+            return _guids.TryAdd(socket, suid);
         }
 
-        public Networker GetBySUID(Guid suid)
+        public Networker? GetNetworker(Socket socket)
         {
-            throw new NotImplementedException();
+            if (_networkers.TryGetValue(socket, out var networker))
+                return networker;
+            return null;
         }
 
-        public bool PairWithUID(Socket socket, Guid suid)
+        public Guid? GetSuid(Socket socket)
         {
-            throw new NotImplementedException();
+            if (_guids.TryGetValue(socket, out var suid))
+                return suid;
+            return null;
         }
     }
 }

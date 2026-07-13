@@ -17,23 +17,23 @@ namespace Shared.Source.USC
         STD_AUTHENTICATION   = 6,
         TOKEN_AUTHENTICATION = 7,
 
-        HERE_IS_SYNC    = 8,
-        I_RECEIVED_SYNC = 9,
+        HERE_IS_SYNC    = 8,                    // ответ сервера
+        I_RECEIVED_SYNC = 9,                    // запрос клиента
         TRY_CHANGE_MY_DEVICE_PRIORITY = 10,
 
-        I_REQUEST_ACTIVE_CHATS = 11,
-        HERE_IS_ACTIVE_CHATS   = 12,
-        I_REQUEST_CHAT_HISTORY_UPDATE = 13,
-        HERE_IS_CHAT_HISTORY_UPDATE   = 14,
+        I_REQUEST_ACTIVE_CHATS = 11,            // запрос клиента
+        HERE_IS_ACTIVE_CHATS   = 12,            // ответ сервера
+        I_REQUEST_CHAT_HISTORY_UPDATE = 13,     // запрос клиента
+        HERE_IS_CHAT_HISTORY_UPDATE   = 14,     // ответ сервера
 
         UPDATE_PING_STATUS    = 15,
         UPDATE_MESSAGE_STATUS = 16,
 
-        SEND_MSG   = 17,
-        SEND_PIC   = 18,
-        SEND_FILE  = 19,
-        SEND_MUSIC = 20,
-        DELETE_MSG = 21,
+        SEND_MSG   = 17,                        // запрос клиента
+        SEND_PIC   = 18,                        // запрос клиента
+        SEND_FILE  = 19,                        // запрос клиента
+        SEND_MUSIC = 20,                        // запрос клиента
+        DELETE_MSG = 21,                        // запрс клиента
 
         CHANGE_LOGIN    = 22,
         CHANGE_PASSWORD = 23,

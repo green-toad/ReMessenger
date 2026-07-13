@@ -11,9 +11,9 @@ namespace MessengerServer.ConnectionReciver
     internal class ConnectionReceiver : BackgroundService
     {
         private readonly IConnectionFabric _factory;
-        private ConnectionAccepter _listener;
-        private IConnectionContainer _container;
-        private IncomingEvent _delegateLink;
+        private readonly ConnectionAccepter _listener;
+        private readonly IConnectionContainer _container;
+        private readonly IncomingEvent _delegateLink;
 
         public ConnectionReceiver(
             IConnectionFabric fabric, 
@@ -31,7 +31,8 @@ namespace MessengerServer.ConnectionReciver
         {
             await foreach (var sock in _listener.acceptingRequests.Reader.ReadAllAsync(stoppingToken))
             {
-                _container.Add(
+                _container.AddNetworker(
+                    sock,
                     _factory.Create(
                         sock, 
                         _delegateLink

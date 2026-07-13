@@ -32,17 +32,28 @@ namespace MessengerServer
 
             //await host.RunAsync();
 
-        var host = Host.CreateDefaultBuilder(args)
-            .ConfigureServices((context, services) =>
-            {
-                services.AddSingleton<IConnectionContainer, ConnectionContainer>();
-                services.AddHostedService<ConnectionReceiver>();
-                services.AddSingleton<Socket>(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp));
-                services.AddHostedService<MessageHandler>();
-                services.AddSingleton<IConnectionFabric, ConnectionHandlerFactory>();
-                services.AddHostedService<ConnectionAccepter>();
-            })
+            var host = Host.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddDbContext<AppDbContext>
+                    (options =>
+                        options.UseNpgsql("Host=localhost;Database=JabNetDatabase;Username=Jadmin;Password=4649"
+                    ));
+
+                    services.AddSingleton<IConnectionContainer, ConnectionContainer>();
+                    services.AddHostedService<ConnectionReceiver>();
+                    services.AddSingleton<Socket>(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp));
+                    services.AddHostedService<MessageHandler>();
+                    services.AddSingleton<IConnectionFabric, ConnectionHandlerFactory>();
+                    services.AddHostedService<ConnectionAccepter>();
+                })
             .Build();
+
+            await host.RunAsync();
+
+            Console.ReadKey();
+            
+            await host.StopAsync(TimeSpan.FromSeconds(5)); 
         }
     }
 
@@ -91,5 +102,5 @@ namespace MessengerServer
     //            await context.SaveChangesAsync();
     //        }
     //    }
-}
+    //  }
 }
