@@ -23,7 +23,7 @@ namespace Shared.Source.USC
                 []
             );
         }
-        static public byte[] HERE_IS_ACTIVE_CHATS(JN_Chat[] chats)
+        static public byte[] HERE_IS_ACTIVE_CHATS(UInt64 responseSID, JN_Chat[] chats)
         {
             int totalLength = 0;
             foreach (var chat in chats)
@@ -74,7 +74,14 @@ namespace Shared.Source.USC
                 }
             }
 
-            return result;
+            return PackTogether
+            (
+                responseSID,
+                0,
+                MainCommand.HERE_IS_ACTIVE_CHATS,
+                [],
+                result
+            );
         }
 
 
