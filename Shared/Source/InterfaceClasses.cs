@@ -7,14 +7,17 @@ using AVcontrol;
 
 namespace Shared.Source
 {
-    public class JN_Message(DateTime4b sentTime, string message, UInt64 authorSUID, UInt32 messageSUID)
+    public class JN_Message(DateTime4b sentTime, string message, UInt64 authorSUID, UInt64 membership, UInt32 messageSUID)
     {
         public DateTime4b sentTime = sentTime;
+
         public string message = message;
 
         public UInt64 authorSUID = authorSUID;
 
         public UInt32 messageSUID = messageSUID;
+
+        public UInt64 membership = membership;
 
         public JN_MessageState state = JN_MessageState.SENDING;
     }

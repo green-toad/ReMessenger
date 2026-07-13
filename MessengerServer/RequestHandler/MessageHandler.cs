@@ -6,7 +6,6 @@ using NetDriver.AE;
 using System.Threading.Channels;
 using Shared.Source.USC;
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 
 namespace MessengerServer.RequestHandler
 {
@@ -51,7 +50,7 @@ namespace MessengerServer.RequestHandler
                                                     .Select(p => p.UserSUID)
                                                     .ToList();
                             }
-                            ntwrkr.Answer(Encode.HERE_IS_ACTIVE_CHATS(chts.ToArray()), req.frameuid.Value);
+                            ntwrkr.Answer(Encode.HERE_IS_ACTIVE_CHATS(package.ForResponseSID, chts.ToArray()), req.frameuid.Value);
                         }
                         break;
                     
@@ -68,22 +67,22 @@ namespace MessengerServer.RequestHandler
                     
                     case MainCommand.SEND_MSG:
                         var cntntFmsgSnd = Decode.SEND_MSG(package.PackedContent);
-                        datacontext.Messages.Add(new Message(cntntFmsgSnd.sentTime, cntntFmsgSnd.message, cntntFmsgSnd.authorSUID, cntntFmsgSnd.messageSUID));
+                        await datacontext.Messages.AddAsync(new Message(cntntFmsgSnd.sentTime, cntntFmsgSnd.message, cntntFmsgSnd.authorSUID, cntntFmsgSnd.membership, cntntFmsgSnd.messageSUID), stoppingToken);
                         break;
                     
                     case MainCommand.SEND_PIC:
                         var cntntFpicSnd = Decode.SEND_MSG(package.PackedContent);
-                            datacontext.Messages.Add(new Message(cntntFpicSnd.sentTime, cntntFpicSnd.message, cntntFpicSnd.authorSUID, cntntFpicSnd.messageSUID));
+                        await datacontext.Messages.AddAsync(new Message(cntntFpicSnd.sentTime, cntntFpicSnd.message, cntntFpicSnd.authorSUID, cntntFpicSnd.membership, cntntFpicSnd.messageSUID), stoppingToken);
                         break;
                     
                     case MainCommand.SEND_FILE:
                         var cntntFfileSnd = Decode.SEND_FILE(package.PackedContent);
-                        datacontext.Messages.Add(new Message(cntntFfileSnd.sentTime, cntntFfileSnd.message, cntntFfileSnd.authorSUID, cntntFfileSnd.messageSUID));
+                        await datacontext.Messages.AddAsync(new Message(cntntFfileSnd.sentTime, cntntFfileSnd.message, cntntFfileSnd.authorSUID, cntntFfileSnd.membership, cntntFfileSnd.messageSUID), stoppingToken);
                         break;
 
                     case MainCommand.SEND_MUSIC:
                         var cntntFmusicSnd = Decode.SEND_MUSIC(package.PackedContent);
-                        datacontext.Messages.Add(new Message(cntntFmusicSnd.sentTime, cntntFmusicSnd.message, cntntFmusicSnd.authorSUID, cntntFmusicSnd.messageSUID));
+                        await datacontext.Messages.AddAsync(new Message(cntntFmusicSnd.sentTime, cntntFmusicSnd.message, cntntFmusicSnd.authorSUID, cntntFmusicSnd.membership, cntntFmusicSnd.messageSUID), stoppingToken);
                         break;
 
                     case MainCommand.DELETE_MSG:
@@ -93,6 +92,7 @@ namespace MessengerServer.RequestHandler
                             datacontext.Messages.Remove(msgToRemove);
                         break;
                 }
+                await datacontext.SaveChangesAsync(stoppingToken);
             }
         }
 

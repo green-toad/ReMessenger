@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using NetDriver.AE;
 using MessengerServer.ConnectionReciver;
 using MessengerServer.RequestHandler;
+using System.Net;
 
 namespace MessengerServer
 {
@@ -32,6 +33,11 @@ namespace MessengerServer
 
             //await host.RunAsync();
 
+            var sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            sock.Bind(new IPEndPoint(IPAddress.Any, 22022));
+            sock.Listen();
+
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices((context, services) =>
                 {
@@ -42,7 +48,7 @@ namespace MessengerServer
 
                     services.AddSingleton<IConnectionContainer, ConnectionContainer>();
                     services.AddHostedService<ConnectionReceiver>();
-                    services.AddSingleton<Socket>(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp));
+                    services.AddSingleton<Socket>(sock);
                     services.AddHostedService<MessageHandler>();
                     services.AddSingleton<IConnectionFabric, ConnectionHandlerFactory>();
                     services.AddHostedService<ConnectionAccepter>();

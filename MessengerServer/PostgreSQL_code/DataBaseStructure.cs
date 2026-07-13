@@ -72,13 +72,13 @@ namespace MessengerServer
 
     public class Message : JN_Message
     {
-        public Message(DateTime4b sentTime, string message, ulong authorSUID, uint messageSUID) : base(sentTime, message, authorSUID, messageSUID) { }
+        public Message(DateTime4b sentTime, string message, ulong authorSUID, ulong membership, uint messageSUID) : base(sentTime, message, authorSUID, membership, messageSUID) { }
 
         [Key]
         public UInt32 SUID { get => messageSUID; set => messageSUID = value; }
         public DateTime Time { get => sentTime.; set => sentTime = new DateTime4b(value); } // докопаться до егора
         public UInt64 Owner { get => authorSUID; set => authorSUID = value; }
-        public UInt64 Membership { get; set; }
+        public UInt64 Membership { get => membership; set => membership = value; }
         public Type ContentType { get; set; }
         public string? Content { get => message; set => message = value; }
 

@@ -55,17 +55,17 @@ namespace Shared.Source.USC
             List<JN_Message> listmsg = new();
             while (true)
             {
-                len = FromBinary.LittleEndian<int>(packedContent.AsSpan(offset, 4));                        // длинна конкретно текста
-
+                len = FromBinary.LittleEndian<int>(packedContent.AsSpan(offset, 4));
                 listmsg.Add(new(
                     new DateTime4b(
                         FromBinary.LittleEndian<uint>(packedContent.AsSpan(offset + 4, 4)),
-                        FromBinary.LittleEndian<uint>(packedContent.AsSpan(offset + 4 + 4, 4))),
-                    FromBinary.Utf16(packedContent.AsSpan(offset + 4 + 4 + 4, len)),
-                    FromBinary.LittleEndian<ulong>(packedContent.AsSpan(offset + 4 + 4 + 4 + len, 8)),
-                    FromBinary.LittleEndian<UInt32>(packedContent.AsSpan(offset + 4 + 4 + 4 + len + 8, 4))
+                        FromBinary.LittleEndian<uint>(packedContent.AsSpan(offset + 8, 4))),
+                    FromBinary.Utf16(packedContent.AsSpan(offset + 12, len)),
+                    FromBinary.LittleEndian<ulong>(packedContent.AsSpan(offset + 12 + len, 8)),
+                    FromBinary.LittleEndian<ulong>(packedContent.AsSpan(offset + 12 + len + 8, 8)),
+                    FromBinary.LittleEndian<uint>(packedContent.AsSpan(offset + 12 + len + 16, 4))
                 ));
-                offset += 8 + 8 + 4 + + 4 + len;
+                offset += 4 + 8 + len + 8 + 8 + 4;
                 if (offset >= packedContent.Length) break;
             }
             return listmsg;
