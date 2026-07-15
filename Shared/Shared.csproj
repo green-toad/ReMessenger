@@ -15,6 +15,9 @@
     <Reference Include="AVcontrol">
       <HintPath>..\lib\AVcontrol\AVcontrol.dll</HintPath>
     </Reference>
+    <Reference Include="JabrAPI">
+      <HintPath>..\lib\JabrAPI\Preview\JabrAPI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

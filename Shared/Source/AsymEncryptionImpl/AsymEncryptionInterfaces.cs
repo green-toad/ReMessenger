@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 
 
@@ -6,16 +7,16 @@ namespace Shared.Source.AsymEncryptionImpl
 {
     public interface IAsymetricEncryptor
     {
-        Span<Byte> Encrypt(Span<Byte> content);
-        Span<Byte> Decrypt(Span<Byte> content);
+        List<Byte> Encrypt(List<Byte> content);
+        List<Byte> Decrypt(List<Byte> content);
 
 
         void Next();
         void GenerateKey();
 
 
-        bool ImportKey(Span<Byte> key);
-        Span<Byte> ExportKey();
+        bool ImportKey(List<Byte> key);
+        List<Byte> ExportKey();
 
 
         bool IsKeyValid();

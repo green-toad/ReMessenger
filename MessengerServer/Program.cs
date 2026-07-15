@@ -8,6 +8,7 @@ using NetDriver.AE;
 using MessengerServer.ConnectionReciver;
 using MessengerServer.RequestHandler;
 using System.Net;
+using Shared.Source.AsymEncryptionImpl;
 
 namespace MessengerServer
 {
@@ -52,6 +53,8 @@ namespace MessengerServer
                     services.AddHostedService<MessageHandler>();
                     services.AddSingleton<IConnectionFabric, ConnectionHandlerFactory>();
                     services.AddHostedService<ConnectionAccepter>();
+                    services.AddTransient<IAsymetricEncryptor, TemporaryPlug>();
+                    services.AddSingleton<IEncryptorFabric, EncryptorFactory>();
                 })
             .Build();
 
@@ -109,4 +112,45 @@ namespace MessengerServer
     //        }
     //    }
     //  }
+
+    public class TemporaryPlug : IAsymetricEncryptor
+    {
+        public Span<byte> Encrypt(Span<byte> content)
+        {
+            return content;
+        }
+
+        public Span<byte> Decrypt(Span<byte> content)
+        {
+            return content;
+        }
+
+        public void Next()
+        {
+        }
+
+        public void GenerateKey()
+        {
+        }
+
+        public bool ImportKey(Span<byte> key)
+        {
+            return true;
+        }
+
+        public Span<byte> ExportKey()
+        {
+            return new Span<byte>();
+        }
+
+        public bool IsKeyValid()
+        {
+            return true;
+        }
+
+        public bool IsEncryptedMsgValid()
+        {
+            return true;
+        }
+    }
 }
