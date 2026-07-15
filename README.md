@@ -12,7 +12,7 @@ We use a custom algorithm for the data encryption: **_RE5 with Noise shuffling v
 
 ## Contributors and maintainers of the up-to-date repository:
 
-- [green-toad (previously _FrogCpp_or nyashk-a):](https://github.com/green-toad)  Full Server logic, Networking & Desktop client «Epsilon»
+- [green-toad (previously _FrogCpp_ or _nyashk-a_):](https://github.com/green-toad)  Full Server logic, Networking & Desktop client «Epsilon»
 - [Gyroscopic-why:](https://github.com/Gyroscopic-why) Encryption, Communication protocol & Mobile client «Ypsilon»
 
 ---
