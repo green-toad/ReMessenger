@@ -3,7 +3,7 @@
 This is the new repository of our C# **End-To-End encrypted messenger**
 
 We use a custom algorithm for the data encryption: **_RE5 with Noise shuffling v4_**  
-(also planned support for advanced RE6 (wip) and weaker but faster RE3, RE4)  
+(also planned support for advanced RE6, RE7 and RSA (wip), and maybe weaker but faster RE4, RE3)
 
 ##### Learn more about the [Jabr encryptor API](https://github.com/gyroscopic-why/Jabr), [documentation (wip)](https://github.com/gyroscopic-why/Jabr/blob/wip/README.md) and [work in progress preview](https://github.com/gyroscopic-why/Jabr/tree/wip)
 
@@ -21,6 +21,6 @@ We use a custom algorithm for the data encryption: **_RE5 with Noise shuffling v
 ## Custom project dependencies:
 - Encryption: [Jabr - Gyroscopic](https://github.com/gyroscopic-why/Jabr) (v5.0+)
 - Networking: [NetDriver - green-toad](https://github.com/green-toad/NetDriver) (AE+)
-- Miscellaneous: [AVcontrol - Gyroscopic](https://github.com/gyroscopic-why/AVcontrol) (v2.7+)
+- Miscellaneous: [AVcontrol - Gyroscopic](https://github.com/gyroscopic-why/AVcontrol) (v2.7.1+)
 
 ---
