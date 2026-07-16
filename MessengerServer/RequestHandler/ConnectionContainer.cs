@@ -10,9 +10,14 @@ namespace MessengerServer.RequestHandler
     public interface IConnectionContainer
     {
         public bool AddNetworker(Socket socket, Networker networker);
+        public bool Pop(Socket socket);
+        public bool Pop(Networker networker);
         public Networker? GetNetworker(Socket socket);
         public bool AddSuid(Socket socket, UInt64 suid);
         public UInt64? GetSuid(Socket socket);
+
+        public List<Networker> GetAllWorkers();
+        public void Sync();
     }
     internal class ConnectionContainer : IConnectionContainer
     {
@@ -29,6 +34,11 @@ namespace MessengerServer.RequestHandler
             return _guids.TryAdd(socket, suid);
         }
 
+        public List<Networker> GetAllWorkers()
+        {
+            return _networkers.Values.ToList();
+        }
+
         public Networker? GetNetworker(Socket socket)
         {
             if (_networkers.TryGetValue(socket, out var networker))
@@ -41,6 +51,34 @@ namespace MessengerServer.RequestHandler
             if (_guids.TryGetValue(socket, out var suid))
                 return suid;
             return null;
+        }
+
+        public bool Pop(Socket socket)
+        {
+            if (!_networkers.TryRemove(socket, out _)) return false;
+            if (!_guids.TryRemove(socket, out _)) return false;
+            return true;
+        }
+
+        public bool Pop(Networker networker)
+        {
+            var sock = _networkers.FirstOrDefault(p => p.Value == networker).Key;
+            if (sock == null) return false;
+
+            if (!_networkers.TryRemove(sock, out _)) return false;
+            if (!_guids.TryRemove(sock, out _)) return false;
+            return true;
+        }
+
+        public void Sync()
+        {
+            foreach (var sock in _guids.Keys)
+            {
+                if (!_networkers.ContainsKey(sock))
+                {
+                    _guids.Remove(sock, out _);
+                }
+            }
         }
     }
 }

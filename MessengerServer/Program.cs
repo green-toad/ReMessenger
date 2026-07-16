@@ -9,6 +9,7 @@ using MessengerServer.ConnectionReciver;
 using MessengerServer.RequestHandler;
 using System.Net;
 using Shared.Source.AsymEncryptionImpl;
+using MessengerServer.CorpseCleaner;
 
 namespace MessengerServer
 {
@@ -42,7 +43,7 @@ namespace MessengerServer
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddDbContext<AppDbContext>
+                    services.AddDbContextFactory<AppDbContext>
                     (options =>
                         options.UseNpgsql("Host=localhost;Database=JabNetDatabase;Username=Jadmin;Password=4649"
                     ));
@@ -54,6 +55,7 @@ namespace MessengerServer
                     services.AddSingleton<IConnectionFabric, ConnectionHandlerFactory>();
                     services.AddHostedService<ConnectionAccepter>();
                     services.AddTransient<IAsymetricEncryptor, TemporaryPlug>();
+                    services.AddHostedService<Cleaner>();
                     services.AddSingleton<IEncryptorFabric, EncryptorFactory>();
                 })
             .Build();

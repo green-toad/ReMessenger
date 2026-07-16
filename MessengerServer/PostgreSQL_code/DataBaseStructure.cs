@@ -76,7 +76,7 @@ namespace MessengerServer
 
         [Key]
         public UInt32 SUID { get => messageSUID; set => messageSUID = value; }
-        public DateTime Time { get => sentTime.; set => sentTime = new DateTime4b(value); } // докопаться до егора
+        public DateTime Time { get => sentTime.ToDateTime(); set => sentTime = new DateTime4b(value); }
         public UInt64 Owner { get => authorSUID; set => authorSUID = value; }
         public UInt64 Membership { get => membership; set => membership = value; }
         public Type ContentType { get; set; }
