@@ -40,16 +40,16 @@ namespace Shared.Source.USC
         DELETE_ACCOUNT  = 24,
 
         //-----  RESPONSES
-        OK = 249,
-        OK_NOW_SYNCING = 250,
-        NOT_NOW_PLEASE_WAIT_FOR_SYNC = 251,
+        OK = 121,
+        OK_NOW_SYNCING = 122,
+        NOT_NOW_PLEASE_WAIT_FOR_SYNC = 123,
 
-        ERROR_UNKNOWN = 252,
-        ERROR_PROBABLY_INTERNET_TROUBLE = 253,
-        ERROR_YOU_NEED_TO_REAUTHORISE = 254,
+        ERROR_UNKNOWN = 124,
+        ERROR_PROBABLY_INTERNET_TROUBLE = 125,
+        ERROR_YOU_NEED_TO_REAUTHORISE = 126,
 
         //-----  MISC
-        UNKNOWN = 255
+        UNKNOWN = 127
     }
 
 

@@ -6,17 +6,31 @@ namespace Shared.Source.USC
 {
     static public partial class Encode
     {
-        static public Byte[] CONNECT_CLIENT_SERVER_1_EN(SubCommand[] subCommands)
+        static public Byte[] CONNECT_CLIENT_SERVER_1_EN(Encryptors.AsymetricEncryptionType aencType, Byte[] publicKey)
         {
-            throw new NotImplementedException();
+            return
+            [
+                (Byte) MainCommand.CONNECT_CLIENT_SERVER_1_EN,
+                (Byte) aencType,
+                .. publicKey
+            ];
         }
-        static public Byte[] CONNECT_CLIENT_SERVER_2_EE(SubCommand[] subCommands)
+        static public Byte[] CONNECT_CLIENT_SERVER_2_EE(Byte[] publicKey, Byte[] reKeyExport)
         {
-            throw new NotImplementedException();
+            return
+            [
+                (Byte) MainCommand.CONNECT_CLIENT_SERVER_2_EE,
+                .. publicKey,
+                .. reKeyExport
+            ];
         }
-        static public Byte[] CONNECT_CLIENT_SERVER_3_NE(SubCommand[] subCommands)
+        static public Byte[] CONNECT_CLIENT_SERVER_3_NE(Byte[] reKeyExport)
         {
-            throw new NotImplementedException();
+            return
+            [
+                (Byte) MainCommand.CONNECT_CLIENT_SERVER_3_NE,
+                .. reKeyExport
+            ];
         }
     }
 }
