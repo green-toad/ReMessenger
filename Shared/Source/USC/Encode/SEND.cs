@@ -10,9 +10,9 @@ namespace Shared.Source.USC
     {
         static public Byte[] SEND_MSG(UInt64 sessionId, UInt64 forResponseSID, JN_Message msg)
         {
-            int msgLen = Encoding.Unicode.GetByteCount(msg.message);
-            byte[] result = new byte[4 + 8 + msgLen + 8 + 8 + 4];
-            int offset = 0;
+            Int32 msgLen = Encoding.Unicode.GetByteCount(msg.message);
+            Byte[] result = new Byte[4 + 8 + msgLen + 8 + 8 + 4];
+            Int32 offset = 0;
             Buffer.BlockCopy(ToBinary.LittleEndian(msgLen), 0, result, offset, 4);
             offset += 4;
             Buffer.BlockCopy(ToBinary.LittleEndian(msg.sentTime.PassedTotalMinutes), 0, result, offset, 4);
@@ -41,8 +41,8 @@ namespace Shared.Source.USC
 
         static public Byte[] SEND_PIC(UInt64 sessionId, UInt64 forResponseSID, JN_Message msg)
         {
-            byte[] result = new byte[4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8 + 4];
-            int offset = 0;
+            Byte[] result = new Byte[4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8 + 4];
+            Int32 offset = 0;
             Buffer.BlockCopy(ToBinary.LittleEndian(Encoding.Unicode.GetByteCount(msg.message)), 0, result, offset, 4);
             offset += 4;
             Buffer.BlockCopy(ToBinary.LittleEndian(msg.sentTime.PassedTotalMinutes), 0, result, offset, 4);
@@ -68,8 +68,8 @@ namespace Shared.Source.USC
         }
         static public Byte[] SEND_FILE(UInt64 sessionId, UInt64 forResponseSID, JN_Message msg)
         {
-            byte[] result = new byte[4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8 + 4];
-            int offset = 0;
+            Byte[] result = new Byte[4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8 + 4];
+            Int32 offset = 0;
             Buffer.BlockCopy(ToBinary.LittleEndian(Encoding.Unicode.GetByteCount(msg.message)), 0, result, offset, 4);
             offset += 4;
             Buffer.BlockCopy(ToBinary.LittleEndian(msg.sentTime.PassedTotalMinutes), 0, result, offset, 4);
@@ -95,8 +95,8 @@ namespace Shared.Source.USC
         }
         static public Byte[] SEND_MUSIC(UInt64 sessionId, UInt64 forResponseSID, JN_Message msg)
         {
-            byte[] result = new byte[4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8 + 4];
-            int offset = 0;
+            Byte[] result = new Byte[4 + 8 + Encoding.Unicode.GetByteCount(msg.message) + 8 + 4];
+            Int32 offset = 0;
             Buffer.BlockCopy(ToBinary.LittleEndian(Encoding.Unicode.GetByteCount(msg.message)), 0, result, offset, 4);
             offset += 4;
             Buffer.BlockCopy(ToBinary.LittleEndian(msg.sentTime.PassedTotalMinutes), 0, result, offset, 4);

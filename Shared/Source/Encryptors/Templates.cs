@@ -8,7 +8,8 @@ namespace Shared.Source.Encryptors
     {
         RSA = 0,
         REa = 1,
-        ECC = 2
+        ECC = 2,
+        UNKNOWN = 255
     }
 
 

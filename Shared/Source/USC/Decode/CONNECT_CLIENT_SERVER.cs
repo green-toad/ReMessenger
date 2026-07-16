@@ -1,4 +1,5 @@
 ﻿using System;
+using AVcontrol;
 
 
 
@@ -6,17 +7,27 @@ namespace Shared.Source.USC
 {
     static public partial class Decode
     {
-        static public Byte[] CONNECT_CLIENT_SERVER_1_EN(SubCommand[] subCommands)
+        static public (Encryptors.AsymetricEncryptionType aencType, Byte[] publicKey)
+            CONNECT_CLIENT_SERVER_1_EN(Byte[] packedContent)
         {
-            throw new NotImplementedException();
+            Byte unsanitizedAencType = packedContent[1];
+
+            return
+            (
+                Enum.IsDefined(typeof(Encryptors.AsymetricEncryptionType), unsanitizedAencType)
+                    ? (Encryptors.AsymetricEncryptionType)unsanitizedAencType
+                    :  Encryptors.AsymetricEncryptionType.UNKNOWN,
+                packedContent[2..]
+            );
         }
-        static public Byte[] CONNECT_CLIENT_SERVER_2_EE(SubCommand[] subCommands)
+        static public (Byte[] publicKey, Byte[] reKeyExport) CONNECT_CLIENT_SERVER_2_EE(Byte[] packedContent)
         {
-            throw new NotImplementedException();
-        }
-        static public Byte[] CONNECT_CLIENT_SERVER_3_NE(SubCommand[] subCommands)
-        {
-            throw new NotImplementedException();
+            Int32 publicKeyLength = FromBinary.LittleEndian<Int32>(packedContent[0..5]);
+
+            Byte[] publicKey = packedContent[5..(5 + publicKeyLength)];
+            Byte[] reKeyExport = packedContent[(5 + publicKeyLength)..];
+
+            return (publicKey, reKeyExport);
         }
     }
 }
