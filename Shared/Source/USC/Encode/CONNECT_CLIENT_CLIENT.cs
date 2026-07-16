@@ -28,12 +28,11 @@ namespace Shared.Source.USC
                 .. reKeyExport
             ];
         }
-        static public Byte[] CONNECT_CLIENT_CLIENT_3_NE(UInt64 mySUID, Byte[] reKeyExport)
+        static public Byte[] CONNECT_CLIENT_CLIENT_3_NE(Byte[] reKeyExport)
         {
             return
             [
                 (Byte) MainCommand.CONNECT_CLIENT_CLIENT_3_NE,
-                .. ToBinary.LittleEndian(mySUID),
                 .. reKeyExport
             ];
         }

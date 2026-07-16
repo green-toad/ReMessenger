@@ -24,10 +24,11 @@ namespace Shared.Source.USC
         {
             Int32 publicKeyLength = FromBinary.LittleEndian<Int32>(packedContent[0..5]);
 
-            Byte[] publicKey = packedContent[5..(5 + publicKeyLength)];
-            Byte[] reKeyExport = packedContent[(5 + publicKeyLength)..];
-
-            return (publicKey, reKeyExport);
+            return
+            (
+                packedContent[5..(5 + publicKeyLength)],
+                packedContent[(5 + publicKeyLength)..]
+            );
         }
     }
 }
