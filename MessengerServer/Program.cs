@@ -54,7 +54,7 @@ namespace MessengerServer
                     services.AddHostedService<MessageHandler>();
                     services.AddSingleton<IConnectionFabric, ConnectionHandlerFactory>();
                     services.AddHostedService<ConnectionAccepter>();
-                    services.AddTransient<IAsymetricEncryptor, TemporaryPlug>();
+                    services.AddTransient<IEncryptor, TestImpl>();
                     services.AddHostedService<Cleaner>();
                     services.AddSingleton<IEncryptorFabric, EncryptorFactory>();
                 })
@@ -115,7 +115,7 @@ namespace MessengerServer
     //    }
     //  }
 
-    public class TemporaryPlug : IAsymetricEncryptor
+    public class TemporaryPlug : IEncryptor
     {
         public Span<byte> Encrypt(Span<byte> content)
         {
@@ -153,6 +153,26 @@ namespace MessengerServer
         public bool IsEncryptedMsgValid()
         {
             return true;
+        }
+
+        public List<byte> Encrypt(List<byte> content)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<byte> Decrypt(List<byte> content)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ImportKey(List<byte> key)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<byte> IEncryptor.ExportKey()
+        {
+            throw new NotImplementedException();
         }
     }
 }

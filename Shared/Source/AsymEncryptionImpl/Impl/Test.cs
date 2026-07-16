@@ -7,7 +7,7 @@ using JabrAPI;
 
 namespace Shared.Source.AsymEncryptionImpl
 {
-    public class TestImpl : IAsymetricEncryptor
+    public class TestImpl : IEncryptor
     {
         RE5.BinaryKey binKey;
         public List<byte> Encrypt(List<byte> content)

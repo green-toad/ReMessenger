@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Shared.Source.AsymEncryptionImpl
 {
-    public interface IAsymetricEncryptor
+    public interface IEncryptor
     {
         List<Byte> Encrypt(List<Byte> content);
         List<Byte> Decrypt(List<Byte> content);

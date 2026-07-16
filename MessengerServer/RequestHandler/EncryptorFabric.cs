@@ -10,7 +10,7 @@ namespace MessengerServer.ConnectionReciver
 {
     public interface IEncryptorFabric
     {
-        public IAsymetricEncryptor Create();
+        public IEncryptor Create();
     }
 
 
@@ -23,9 +23,9 @@ namespace MessengerServer.ConnectionReciver
             _serviceProvider = serviceProvider;
         }
 
-        public IAsymetricEncryptor Create()
+        public IEncryptor Create()
         {
-            return ActivatorUtilities.CreateInstance<IAsymetricEncryptor>(_serviceProvider);
+            return ActivatorUtilities.CreateInstance<IEncryptor>(_serviceProvider);
         }
     }
 }
