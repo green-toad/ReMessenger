@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using AVcontrol;
 
 
@@ -17,6 +17,8 @@ namespace Shared.Source.USC
                 try
                 {
                     Byte unsanitizedCommand = packedContent[0];
+                    unsanitizedCommand &= 0b01111111;
+
                     MainCommand parsedMainCommand = Enum.IsDefined(typeof(MainCommand), unsanitizedCommand)
                         ? (MainCommand)unsanitizedCommand
                         :  MainCommand.UNKNOWN;
@@ -28,6 +30,13 @@ namespace Shared.Source.USC
                         parsedMainCommand == MainCommand.ERROR_PROBABLY_INTERNET_TROUBLE ||
                         parsedMainCommand == MainCommand.ERROR_YOU_NEED_TO_REAUTHORISE   ||
                         packedContent.Length < 5) return unpacked;
+
+                    if ((packedContent[0] & 0b10000000) != 0)  //  Is compact packet (CONNECTs USC)
+                    {
+                        unpacked.PackedContent = packedContent[1..];
+                        return unpacked;
+                    }
+
 
                     UInt64 sessionId   = FromBinary.BigEndian<UInt64>(packedContent.AsSpan(1, 4));
                     unpacked.SessionId = sessionId;

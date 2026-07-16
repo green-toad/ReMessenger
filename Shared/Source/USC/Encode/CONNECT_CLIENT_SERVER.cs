@@ -1,4 +1,5 @@
 ﻿using System;
+using AVcontrol;
 
 
 
@@ -20,6 +21,7 @@ namespace Shared.Source.USC
             return
             [
                 (Byte) MainCommand.CONNECT_CLIENT_SERVER_2_EE,
+                .. ToBinary.LittleEndian<Int32>(publicKey.Length),
                 .. publicKey,
                 .. reKeyExport
             ];

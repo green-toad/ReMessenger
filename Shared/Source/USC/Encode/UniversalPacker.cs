@@ -11,8 +11,8 @@ namespace Shared.Source.USC
     static public partial class Encode
     {
         static public Byte[] PackTogether(
-            MainCommand mainCommand,
             UInt64 sessionId, UInt64 forResponseSID,
+            MainCommand mainCommand,
             SubCommand[] subCommands,
             Byte[] packedContent)
         {
@@ -28,8 +28,8 @@ namespace Shared.Source.USC
         }
 
         static public Byte[] PackTogether(
-            MainCommand mainCommand,
             UInt64 sessionId, UInt64 forResponseSID,
+            MainCommand mainCommand,
             SubCommand[] subCommands,
             List<Byte> reKeyExport, Byte[] packedContent)
         {
