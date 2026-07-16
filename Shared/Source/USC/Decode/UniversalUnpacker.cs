@@ -28,7 +28,7 @@ namespace Shared.Source.USC
                     if (parsedMainCommand == MainCommand.UNKNOWN ||
                         parsedMainCommand == MainCommand.ERROR_UNKNOWN                   ||
                         parsedMainCommand == MainCommand.ERROR_PROBABLY_INTERNET_TROUBLE ||
-                        parsedMainCommand == MainCommand.ERROR_YOU_NEED_TO_REAUTHORISE   ||
+                        parsedMainCommand == MainCommand.ERROR_YOU_NEED_TO_RECONNECT   ||
                         packedContent.Length < 5) return unpacked;
 
                     if ((packedContent[0] & 0b10000000) != 0)  //  Is compact packet (CONNECTs USC)

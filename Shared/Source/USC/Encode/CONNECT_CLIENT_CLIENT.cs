@@ -23,7 +23,7 @@ namespace Shared.Source.USC
             return
             [
                 (Byte) MainCommand.CONNECT_CLIENT_CLIENT_2_EE,
-                .. ToBinary.LittleEndian<Int32>(publicKey.Length),
+                .. ToBinary.LittleEndian(publicKey.Length),
                 .. publicKey,
                 .. reKeyExport
             ];
