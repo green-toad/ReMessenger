@@ -50,5 +50,6 @@ namespace MessengerServer.RequestHandler
     {
         public Networker networker;
         public UInt64 suid;
+        public UInt16 loginAttemptsNumber;              // пока не нужен, но не забудь вставить в регистрацию и аутентификацию  . . .
     }
 }

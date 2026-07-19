@@ -59,6 +59,8 @@ namespace MessengerServer
         public string Bio { get => bio; set => bio = value; }
         [MaxLength(150)]
         public string Avatar { get => avatar; set => avatar = value; }
+
+        public string Password { get; set; }        // as Hash
     }
 
     [PrimaryKey(nameof(UserSUID), nameof(deviceID), nameof(sessionID))]
