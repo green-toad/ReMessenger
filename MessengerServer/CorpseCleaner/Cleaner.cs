@@ -6,8 +6,8 @@ namespace MessengerServer.CorpseCleaner
     internal class Cleaner : BackgroundService
     {
         private readonly int _timeout = 5000;
-        private readonly IConnectionContainer _container;
-        public Cleaner(IConnectionContainer container)
+        private readonly IHashContainer<ClientInformation> _container;
+        public Cleaner(IHashContainer<ClientInformation> container)
         {
             _container = container;
         }
@@ -18,14 +18,13 @@ namespace MessengerServer.CorpseCleaner
             {
                 await Task.Delay(_timeout);
 
-                foreach (var connection in _container.GetAllWorkers())
+                foreach (var clientInfo in _container.GetAll())
                 {
-                    if (!connection.alive)
+                    if (!clientInfo.networker.alive)
                     {
-                        _container.Pop(connection);
+                        _container.Pop(clientInfo);
                     }
                 }
-                _container.Sync();
             }
         }
     }

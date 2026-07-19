@@ -7,78 +7,48 @@ using NetDriver.AE;
 
 namespace MessengerServer.RequestHandler
 {
-    public interface IConnectionContainer
+    public interface IHashContainer<T>
     {
-        public bool AddNetworker(Socket socket, Networker networker);
+        public bool Add(Socket socket);
         public bool Pop(Socket socket);
-        public bool Pop(Networker networker);
-        public Networker? GetNetworker(Socket socket);
-        public bool AddSuid(Socket socket, UInt64 suid);
-        public UInt64? GetSuid(Socket socket);
+        public bool Pop(T content);
+        public T? Get(Socket socket);
 
-        public List<Networker> GetAllWorkers();
-        public void Sync();
+        public List<T> GetAll();
     }
-    internal class ConnectionContainer : IConnectionContainer
+    internal class ConnectionContainer : IHashContainer<ClientInformation>
     {
-        private readonly ConcurrentDictionary<Socket, Networker> _networkers = new();
-        private readonly ConcurrentDictionary<Socket, UInt64> _guids = new();
-
-        public bool AddNetworker(Socket socket, Networker networker)
+        private readonly ConcurrentDictionary<Socket, ClientInformation> _clientInfo = new();
+        public bool Add(Socket socket)
         {
-            return _networkers.TryAdd(socket, networker);
+            return _clientInfo.TryAdd(socket, new ClientInformation());
         }
 
-        public bool AddSuid(Socket socket, UInt64 suid)
+        public ClientInformation Get(Socket socket)
         {
-            return _guids.TryAdd(socket, suid);
+            if (_clientInfo.TryGetValue(socket, out var ci)) return ci;
+            return new ClientInformation();         // здесь должен быть null но, почему то интерфейс не хочет его кушать. . . позже поменяю.
         }
 
-        public List<Networker> GetAllWorkers()
+        public List<ClientInformation> GetAll()
         {
-            return _networkers.Values.ToList();
-        }
-
-        public Networker? GetNetworker(Socket socket)
-        {
-            if (_networkers.TryGetValue(socket, out var networker))
-                return networker;
-            return null;
-        }
-
-        public UInt64? GetSuid(Socket socket)
-        {
-            if (_guids.TryGetValue(socket, out var suid))
-                return suid;
-            return null;
+            return _clientInfo.Values.ToList();
         }
 
         public bool Pop(Socket socket)
         {
-            if (!_networkers.TryRemove(socket, out _)) return false;
-            if (!_guids.TryRemove(socket, out _)) return false;
-            return true;
+            return _clientInfo.TryRemove(socket, out _);
         }
 
-        public bool Pop(Networker networker)
+        public bool Pop(ClientInformation content)
         {
-            var sock = _networkers.FirstOrDefault(p => p.Value == networker).Key;
-            if (sock == null) return false;
-
-            if (!_networkers.TryRemove(sock, out _)) return false;
-            if (!_guids.TryRemove(sock, out _)) return false;
-            return true;
+            return _clientInfo.TryRemove(_clientInfo.First(c => c.Value.Equals(content)).Key, out _);
         }
+    }
 
-        public void Sync()
-        {
-            foreach (var sock in _guids.Keys)
-            {
-                if (!_networkers.ContainsKey(sock))
-                {
-                    _guids.Remove(sock, out _);
-                }
-            }
-        }
+    public struct ClientInformation
+    {
+        public Networker networker;
+        public UInt64 suid;
     }
 }

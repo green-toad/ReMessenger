@@ -48,7 +48,7 @@ namespace MessengerServer
                         options.UseNpgsql("Host=localhost;Database=JabNetDatabase;Username=Jadmin;Password=4649"
                     ));
 
-                    services.AddSingleton<IConnectionContainer, ConnectionContainer>();
+                    services.AddSingleton<IHashContainer<ClientInformation>, ConnectionContainer>();
                     services.AddHostedService<ConnectionReceiver>();
                     services.AddSingleton<Socket>(sock);
                     services.AddHostedService<MessageHandler>();

@@ -12,8 +12,8 @@ namespace MessengerServer.RequestHandler
     internal class MessageHandler : BackgroundService
     {
         private readonly IDbContextFactory<AppDbContext> _dbFactory;
-        private readonly IConnectionContainer _container;
-        public MessageHandler(IDbContextFactory<AppDbContext> dbFactory, IConnectionContainer container)
+        private readonly IHashContainer<ClientInformation> _container;
+        public MessageHandler(IDbContextFactory<AppDbContext> dbFactory, IHashContainer<ClientInformation> container)
         {
             _dbFactory = dbFactory;
             _container = container;
@@ -26,9 +26,7 @@ namespace MessengerServer.RequestHandler
             {
                 var package = Decode.UnPack(req.content);
                 
-                var ntwrkr = _container.GetNetworker(req.socket);
-
-                var uid = _container.GetSuid(req.socket);
+                var client = _container.Get(req.socket);
 
                 await using var datacontext = await _dbFactory.CreateDbContextAsync(stoppingToken);
 
@@ -38,7 +36,7 @@ namespace MessengerServer.RequestHandler
                         if (req.type == ResultContent.Type.from)
                         {
                             var chts = await datacontext.Participants
-                                .Where(p => p.UserSUID == uid)
+                                .Where(p => p.UserSUID == client.suid)
                                 .Include(p => p.ChatLink)
                                     .ThenInclude(c => c.Participants)
                                 .Select(p => p.ChatLink)
@@ -50,7 +48,7 @@ namespace MessengerServer.RequestHandler
                                                     .Select(p => p.UserSUID)
                                                     .ToList();
                             }
-                            ntwrkr.Answer(Encode.HERE_IS_ACTIVE_CHATS(package.ForResponseSID, chts.ToArray()), req.frameuid.Value);
+                            client.networker.Answer(Encode.HERE_IS_ACTIVE_CHATS(package.ForResponseSID, chts.ToArray()), req.frameuid.Value);
                         }
                         break;
                     
@@ -58,7 +56,7 @@ namespace MessengerServer.RequestHandler
                         if (req.type == ResultContent.Type.from)
                         {
                             var cntntFchStRsp = Decode.I_REQUEST_CHAT_HISTORY_UPDATE(package.PackedContent);
-                            ntwrkr.Answer(Encode.HERE_IS_CHAT_HISTORY_UPDATE(await datacontext.Messages.Where(m => m.Membership == cntntFchStRsp.ChatSuid).ToArrayAsync(), 
+                            client.networker.Answer(Encode.HERE_IS_CHAT_HISTORY_UPDATE(await datacontext.Messages.Where(m => m.Membership == cntntFchStRsp.ChatSuid).ToArrayAsync(), 
                             package.SessionId, 
                             package.ForResponseSID), 
                             req.frameuid.Value);

@@ -12,13 +12,13 @@ namespace MessengerServer.ConnectionReciver
     {
         private readonly IConnectionFabric _factory;
         private readonly ConnectionAccepter _listener;
-        private readonly IConnectionContainer _container;
+        private readonly IHashContainer<ClientInformation> _container;
         private readonly IncomingEvent _delegateLink;
 
         public ConnectionReceiver(
             IConnectionFabric fabric, 
             ConnectionAccepter listener, 
-            IConnectionContainer container,
+            IHashContainer<ClientInformation> container,
             MessageHandler delegateLinkObj
             )
         {
@@ -31,13 +31,9 @@ namespace MessengerServer.ConnectionReciver
         {
             await foreach (var sock in _listener.acceptingRequests.Reader.ReadAllAsync(stoppingToken))
             {
-                _container.AddNetworker(
-                    sock,
-                    _factory.Create(
-                        sock, 
-                        _delegateLink
-                    )
-                );
+                _container.Add(sock);
+                var pl = _container.Get(sock);
+                pl.networker = _factory.Create(sock, _delegateLink);
             }
         }
     }
