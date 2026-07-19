@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\connectionreciver\\networkerfabric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:connectionreciver\\networkerfabric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\requesthandler\\encryptorfabric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:requesthandler\\encryptorfabric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\requesthandler\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:requesthandler\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\postgresql_code\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:postgresql_code\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\corpsecleaner\\cleaner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:corpsecleaner\\cleaner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\accauntmanagment\\hashmaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:accauntmanagment\\hashmaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\postgresql_code\\databasestructure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:postgresql_code\\databasestructure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\requesthandler\\connectioncontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +35,16 @@
       "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:connectionreciver\\connectionreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\connectionreciver\\networkerfabric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:connectionreciver\\networkerfabric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\connectionreciver\\connectionaccepter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:connectionreciver\\connectionaccepter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\postgresql_code\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:postgresql_code\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|c:\\users\\suzi\\documents\\projects\\csp\\remessenger\\messengerserver\\requesthandler\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC504A6-EDA6-7EDE-7A7E-A5C98695179A}|MessengerServer.csproj|solutionrelative:requesthandler\\messagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +54,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 417,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "EncryptorFabric.cs",
+              "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\RequestHandler\\EncryptorFabric.cs",
+              "RelativeDocumentMoniker": "RequestHandler\\EncryptorFabric.cs",
+              "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\RequestHandler\\EncryptorFabric.cs",
+              "RelativeToolTip": "RequestHandler\\EncryptorFabric.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T11:10:13.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataBaseStructure.cs",
+              "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\PostgreSQL_code\\DataBaseStructure.cs",
+              "RelativeDocumentMoniker": "PostgreSQL_code\\DataBaseStructure.cs",
+              "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\PostgreSQL_code\\DataBaseStructure.cs",
+              "RelativeToolTip": "PostgreSQL_code\\DataBaseStructure.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAD4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T10:24:18.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HashMaker.cs",
+              "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\AccauntManagment\\HashMaker.cs",
+              "RelativeDocumentMoniker": "AccauntManagment\\HashMaker.cs",
+              "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\AccauntManagment\\HashMaker.cs",
+              "RelativeToolTip": "AccauntManagment\\HashMaker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T10:24:01.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cleaner.cs",
+              "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\CorpseCleaner\\Cleaner.cs",
+              "RelativeDocumentMoniker": "CorpseCleaner\\Cleaner.cs",
+              "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\CorpseCleaner\\Cleaner.cs",
+              "RelativeToolTip": "CorpseCleaner\\Cleaner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T09:24:48.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "DbContext.cs",
               "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\PostgreSQL_code\\DbContext.cs",
               "RelativeDocumentMoniker": "PostgreSQL_code\\DbContext.cs",
@@ -50,11 +118,12 @@
               "RelativeToolTip": "PostgreSQL_code\\DbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T20:04:36.504Z"
+              "WhenOpened": "2026-07-12T20:04:36.504Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ConnectionAccepter.cs",
               "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\ConnectionReciver\\ConnectionAccepter.cs",
               "RelativeDocumentMoniker": "ConnectionReciver\\ConnectionAccepter.cs",
@@ -62,11 +131,12 @@
               "RelativeToolTip": "ConnectionReciver\\ConnectionAccepter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T20:03:36.892Z"
+              "WhenOpened": "2026-07-12T20:03:36.892Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "NetworkerFabric.cs",
               "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\ConnectionReciver\\NetworkerFabric.cs",
               "RelativeDocumentMoniker": "ConnectionReciver\\NetworkerFabric.cs",
@@ -79,51 +149,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "MessageHandler.cs",
               "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\RequestHandler\\MessageHandler.cs",
               "RelativeDocumentMoniker": "RequestHandler\\MessageHandler.cs",
               "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\RequestHandler\\MessageHandler.cs",
               "RelativeToolTip": "RequestHandler\\MessageHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAowCIAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T19:05:14.989Z"
+              "WhenOpened": "2026-07-12T19:05:14.989Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "ConnectionContainer.cs",
               "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\RequestHandler\\ConnectionContainer.cs",
               "RelativeDocumentMoniker": "RequestHandler\\ConnectionContainer.cs",
               "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\RequestHandler\\ConnectionContainer.cs",
               "RelativeToolTip": "RequestHandler\\ConnectionContainer.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAABIAAABUAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADQAAACFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T18:51:48.572Z"
+              "WhenOpened": "2026-07-12T18:51:48.572Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "ConnectionReceiver.cs",
               "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\ConnectionReciver\\ConnectionReceiver.cs",
               "RelativeDocumentMoniker": "ConnectionReciver\\ConnectionReceiver.cs",
               "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\ConnectionReciver\\ConnectionReceiver.cs",
               "RelativeToolTip": "ConnectionReciver\\ConnectionReceiver.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAmwAoAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:36:07.575Z"
+              "WhenOpened": "2026-07-12T17:36:07.575Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\suzi\\Documents\\projects\\csP\\ReMessenger\\MessengerServer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwC4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAwwC0AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:30:46.977Z"
+              "WhenOpened": "2026-07-12T17:30:46.977Z",
+              "EditorCaption": ""
             }
           ]
         }

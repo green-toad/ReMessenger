@@ -8,7 +8,7 @@ using NetDriver.AE;
 using MessengerServer.ConnectionReciver;
 using MessengerServer.RequestHandler;
 using System.Net;
-using Shared.Source.AsymEncryptionImpl;
+using Shared.Source.Encryptors;
 using MessengerServer.CorpseCleaner;
 using MessengerServer.AccauntManagment;
 
@@ -43,7 +43,7 @@ namespace MessengerServer
 
                     services.AddHostedService<ConnectionAccepter>();
 
-                    services.AddTransient<IEncryptor, TestImpl>();
+                    services.AddTransient<IEncryptorDevice, TemporaryPlug>();
 
                     services.AddHostedService<Cleaner>();
 
@@ -60,62 +60,44 @@ namespace MessengerServer
             await host.StopAsync(TimeSpan.FromSeconds(5)); 
         }
     }
-    public class TemporaryPlug : IEncryptor
+    public class TemporaryPlug : IEncryptorDevice
     {
-        public Span<byte> Encrypt(Span<byte> content)
+        public byte[] Decrypt(byte[] content)
         {
-            return content;
+            throw new NotImplementedException();
         }
 
-        public Span<byte> Decrypt(Span<byte> content)
+        public byte[] Encrypt(byte[] content)
         {
-            return content;
+            throw new NotImplementedException();
         }
 
-        public void Next()
+        public byte[] ExportKey()
         {
+            throw new NotImplementedException();
         }
 
         public void GenerateKey()
         {
+            throw new NotImplementedException();
         }
 
-        public bool ImportKey(Span<byte> key)
+        public bool ImportKey(byte[] key)
         {
-            return true;
-        }
-
-        public Span<byte> ExportKey()
-        {
-            return new Span<byte>();
-        }
-
-        public bool IsKeyValid()
-        {
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool IsEncryptedMsgValid()
         {
-            return true;
+            throw new NotImplementedException();
         }
 
-        public List<byte> Encrypt(List<byte> content)
+        public bool IsKeyValid()
         {
             throw new NotImplementedException();
         }
 
-        public List<byte> Decrypt(List<byte> content)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ImportKey(List<byte> key)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<byte> IEncryptor.ExportKey()
+        public void SetCustomSettings()
         {
             throw new NotImplementedException();
         }

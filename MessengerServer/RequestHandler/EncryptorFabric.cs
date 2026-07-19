@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
-using Shared.Source.AsymEncryptionImpl;
+using Shared.Source.Encryptors;
 
 namespace MessengerServer.ConnectionReciver
 {
     public interface IEncryptorFabric
     {
-        public IEncryptor Create();
+        public IEncryptorDevice Create();
     }
 
 
@@ -23,9 +23,9 @@ namespace MessengerServer.ConnectionReciver
             _serviceProvider = serviceProvider;
         }
 
-        public IEncryptor Create()
+        public IEncryptorDevice Create()
         {
-            return ActivatorUtilities.CreateInstance<IEncryptor>(_serviceProvider);
+            return ActivatorUtilities.CreateInstance<IEncryptorDevice>(_serviceProvider);
         }
     }
 }

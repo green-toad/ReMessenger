@@ -6,6 +6,7 @@ using NetDriver.AE;
 using System.Threading.Channels;
 using Shared.Source.USC;
 using Microsoft.EntityFrameworkCore;
+using MessengerServer.AccauntManagment;
 
 namespace MessengerServer.RequestHandler
 {
@@ -13,10 +14,12 @@ namespace MessengerServer.RequestHandler
     {
         private readonly IDbContextFactory<AppDbContext> _dbFactory;
         private readonly IHashContainer<ClientInformation> _container;
-        public MessageHandler(IDbContextFactory<AppDbContext> dbFactory, IHashContainer<ClientInformation> container)
+        private readonly IHashMaker _hashMaker;
+        public MessageHandler(IDbContextFactory<AppDbContext> dbFactory, IHashContainer<ClientInformation> container, IHashMaker hasher)
         {
             _dbFactory = dbFactory;
             _container = container;
+            _hashMaker = hasher;
         }
 
         private readonly Channel<ResultContent> _processingRequests = Channel.CreateBounded<ResultContent>(15 * 100);
@@ -89,8 +92,22 @@ namespace MessengerServer.RequestHandler
                         if (msgToRemove != null)
                             datacontext.Messages.Remove(msgToRemove);
                         break;
+
+                    case MainCommand.STD_AUTHENTICATION:
+                        var cntntFaut = Decode.STD_AUTHENTICATION(package.PackedContent);
+                        var usrFreg = _container.Get(req.socket);
+                        var usrFdbFreg = await datacontext.Users.FindAsync(cntntFaut.suid, stoppingToken);
+                        if (usrFdbFreg != null)
+                        {
+                            if (_hashMaker.IsCorrect(cntntFaut.password, usrFdbFreg))
+                            {
+                                usrFreg.suid = cntntFaut.suid;
+                            }
+                        }
+                        break;
                 }
                 await datacontext.SaveChangesAsync(stoppingToken);
+                await datacontext.DisposeAsync();
             }
         }
 
