@@ -45,11 +45,14 @@ namespace Shared.Source.USC
         DELETE_GROUP = 28,
 
         //-----  RESPONSES
-        OK = 121,
-        OK_NOW_SYNCING = 122,
-        NOT_NOW_PLEASE_WAIT_FOR_SYNC = 123,
+        OK = 119,
+        OK_NOW_SYNCING = 120,
+        NOT_NOW_PLEASE_WAIT_FOR_SYNC = 121,
 
-        ERROR_UNKNOWN = 124,
+        ERROR_UNKNOWN = 122,
+        ERROR_WRONG_PASSWORD = 123,
+        ERROR_INCORRECT_DATA = 124,
+
         ERROR_PROBABLY_INTERNET_TROUBLE = 125,
         ERROR_YOU_NEED_TO_RECONNECT = 126,
 
