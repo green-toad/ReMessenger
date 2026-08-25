@@ -19,8 +19,8 @@ We use a custom algorithm for the data encryption: **_RE5 with Noise shuffling v
 &nbsp;
 
 ## Custom project dependencies:
-- Encryption: [Jabr - Gyroscopic](https://github.com/gyroscopic-why/Jabr) (v5.0+)
+- Encryption: [Jabr - Gyroscopic](https://github.com/gyroscopic-why/Jabr) (v5.5+)
 - Networking: [NetDriver - green-toad](https://github.com/green-toad/NetDriver) (AE+)
-- Miscellaneous: [AVcontrol - Gyroscopic](https://github.com/gyroscopic-why/AVcontrol) (v2.7.1+)
+- Miscellaneous: [AVcontrol - Gyroscopic](https://github.com/gyroscopic-why/AVcontrol) (v3.0+)
 
 ---
