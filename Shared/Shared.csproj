@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Reference Include="AVcontrol">
-      <HintPath>..\lib\AVcontrol\AVcontrol.dll</HintPath>
+      <HintPath>../lib/AVcontrol/Preview/AVcontrol.dll</HintPath>
     </Reference>
     <Reference Include="JabrAPI">
       <HintPath>..\lib\JabrAPI\Preview\JabrAPI.dll</HintPath>

@@ -4,12 +4,8 @@ using AVcontrol;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NetDriver.AE;
-using MessengerServer.ConnectionReciver;
-using MessengerServer.RequestHandler;
 using System.Net;
 using Shared.Source.Encryptors;
-using MessengerServer.CorpseCleaner;
 using MessengerServer.AccauntManagment;
 
 namespace MessengerServer
@@ -31,24 +27,6 @@ namespace MessengerServer
                         options.UseNpgsql("Host=localhost;Database=JabNetDatabase;Username=Jadmin;Password=4649"
                     ));
 
-                    services.AddSingleton<IHashContainer<ClientInformation>, ConnectionContainer>();
-
-                    services.AddHostedService<ConnectionReceiver>();
-
-                    services.AddSingleton<Socket>(sock);
-
-                    services.AddHostedService<MessageHandler>();
-
-                    services.AddSingleton<IConnectionFabric, ConnectionHandlerFactory>();
-
-                    services.AddHostedService<ConnectionAccepter>();
-
-                    services.AddTransient<IEncryptorDevice, TemporaryPlug>();
-
-                    services.AddHostedService<Cleaner>();
-
-                    services.AddSingleton<IEncryptorFabric, EncryptorFactory>();
-
                     services.AddSingleton<IHashMaker, HashMaker>();
                 })
             .Build();
@@ -60,46 +38,17 @@ namespace MessengerServer
             await host.StopAsync(TimeSpan.FromSeconds(5)); 
         }
     }
-    public class TemporaryPlug : IEncryptorDevice
-    {
-        public byte[] Decrypt(byte[] content)
-        {
-            throw new NotImplementedException();
-        }
-
-        public byte[] Encrypt(byte[] content)
-        {
-            throw new NotImplementedException();
-        }
-
-        public byte[] ExportKey()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GenerateKey()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ImportKey(byte[] key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsEncryptedMsgValid()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsKeyValid()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetCustomSettings()
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
+/*
+два синглтона фабрика и сервис
+
+сервис на подключение
+
+фабрика соеденений с postgre
+
+синглтон -- обработчик
+
+синглтон -- контеинер подключений
+
+трансиент -- экземпляры подключений (внутри храним айдишники, нетворкеры, всю хурму)
+*/

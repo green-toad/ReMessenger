@@ -14,20 +14,20 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="NetDriver">
-      <HintPath>..\lib/NetDriver/NetDriver.dll</HintPath>
+      <HintPath>../lib/NetDriver/NetDriver.dll</HintPath>
     </Reference>
     <Reference Include="AVcontrol">
-      <HintPath>..\lib/AVcontrol/AVcontrol.dll</HintPath>
+      <HintPath>../lib/AVcontrol/Preview/AVcontrol.dll</HintPath>
     </Reference>
     <Reference Include="Shared">
-      <HintPath>..\lib/Shared/Shared.dll</HintPath>
+      <HintPath>../lib/Shared/Shared.dll</HintPath>
     </Reference>
   </ItemGroup>
 
