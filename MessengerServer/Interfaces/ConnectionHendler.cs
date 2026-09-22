@@ -1,7 +1,7 @@
 using NetDriver.AE;
 namespace MessengerServer.Interfaces
 {
-    internal interface IConnectionHandler
+    internal interface IConnectionHandler : IAsyncDisposable
     {
         DisconnectEvent disconnectEvent { get; }
 

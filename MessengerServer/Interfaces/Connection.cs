@@ -3,12 +3,13 @@ using NetDriver.AE;
 
 namespace MessengerServer.Interfaces
 {
-    internal interface IConnection
+    internal interface IConnection : IAsyncDisposable
     {
         Guid USUID { get; }
         Networker UNetworker { get; }
         IAsymetrycEncryptor UAsymEncryptor { get; }
         ISymetrycEncryptor USymEncryptor { get; }
-        bool InitalizeNetworker(Socket socket, DisconnectEvent devent, IncomingEvent ievent);
+        void InitalizeNetworker(Socket socket, DisconnectEvent devent, IncomingEvent ievent);
+        bool InitalizeSUID(Guid suid);
     }
 }

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Argon2id.PasswordHasher" Version="1.0.0" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.8">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,6 +29,9 @@
     </Reference>
     <Reference Include="Shared">
       <HintPath>../lib/Shared/Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="JabrAPI">
+      <HintPath>../lib/JabrAPI/JabrAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
 

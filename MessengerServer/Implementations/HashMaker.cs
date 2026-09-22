@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using Argon2id.PasswordHasher; 
+using MessengerServer.Interfaces;
 
-namespace MessengerServer.AccauntManagment
+namespace MessengerServer.Implementations
 {
-    public interface IHashMaker
-    {
-        bool IsCorrect(string password, User user);
-
-        bool SetNewPassword(string oldPassword, string newPassword, User user);
-    }
     internal class HashMaker : IHashMaker
     {
         private readonly Argon2idPasswordHasher _hasher = new();
